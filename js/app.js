@@ -26,6 +26,10 @@ function setUpApp(canvasSelector) {
   const [start, onUpdate] = useGameLoop();
 
   onUpdate((delta) => {
+    if (!document.hasFocus()) {
+      return;
+    }
+
     world.tick(delta);
 
     world.draw(ctx);
