@@ -8,7 +8,7 @@ import { World } from '/js/lib/world.js';
  * @param {string} canvasSelector
  */
 function setUpApp(canvasSelector) {
-  const ctx = useCanvas('#canvas');
+  const ctx = useCanvas(canvasSelector);
 
   const world = new World({
     bounds: new Rect(0, 0, ctx.canvas.width, ctx.canvas.height),
