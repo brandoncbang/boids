@@ -13,7 +13,6 @@ export class Boid extends Entity {
   constructor(params) {
     super(params);
 
-    this.position = params.position;
     this.direction = params.direction ?? Vector2.UP;
   }
 
@@ -34,9 +33,14 @@ export class Boid extends Entity {
   }
 
   draw(ctx) {
-    ctx.rotate(this.direction.angle * Math.PI / 180.0 + 90);
-    ctx.fillStyle = 'red';
-    ctx.fillRect(-4.0, -8.0, 8.0, 8.0);
-    ctx.fillRect(-8.0, 0.0, 16.0, 8.0);
+    ctx.rotate((this.direction.angle + 90.0) * Math.PI / 180.0);
+
+    ctx.fillStyle = 'gray';
+
+    ctx.beginPath();
+    ctx.moveTo(0, -8);
+    ctx.lineTo(6, 8);
+    ctx.lineTo(-6, 8);
+    ctx.fill();
   }
 }
