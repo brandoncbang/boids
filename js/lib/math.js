@@ -10,6 +10,10 @@ export class Vector2 {
     this.y = y;
   }
 
+  get angle() {
+    return Math.atan2(this.y, this.x) * 180 / Math.PI;
+  }
+
   /**
    * @param {Vector2} value
    * @return Vector2
@@ -29,6 +33,13 @@ export class Vector2 {
     return new Vector2(
       this.x * value,
       this.y * value,
+    );
+  }
+
+  rotated(degrees) {
+    return new Vector2(
+      this.x * Math.cos(degrees) - this.y * Math.sin(degrees),
+      this.x * Math.sin(degrees) + this.y * Math.cos(degrees),
     );
   }
 }

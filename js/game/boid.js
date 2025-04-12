@@ -17,24 +17,30 @@ export class Boid extends Entity {
     this.direction = params.direction ?? Vector2.UP;
   }
 
-  /**
-   * @param {number} delta
-   */
-  process(delta) {
+  process(delta, world) {
+    // const checkPosition = this.position.add(
+    //   this.direction.mult(100.0),
+    // );
+
+    // if (!world.bounds.contains(checkPosition)) {
+    //   this.direction = this.direction.rotated(Boid.TURN_SPEED * delta);
+    // }
+
+    this.direction = this.direction.rotated(2.5 * delta);
+
     this.position = this.position.add(
       this.direction.mult(Boid.SPEED * delta),
     );
   }
 
-  /**
-   * @param {CanvasRenderingContext2D} ctx
-   */
   draw(ctx) {
     // TODO: Maybe move wrapped save() and restore() methods before and after calling draw() for each boid.
     ctx.save();
+    ctx.translate(this.position.x, this.position.y);
+    ctx.rotate(this.direction.angle * Math.PI / 180.0 + 90);
     ctx.fillStyle = 'red';
-    ctx.fillRect(this.position.x - 4.0, this.position.y - 8.0, 8.0, 8.0);
-    ctx.fillRect(this.position.x - 8.0, this.position.y, 16.0, 8.0);
+    ctx.fillRect(-4.0, -8.0, 8.0, 8.0);
+    ctx.fillRect(-8.0, 0.0, 16.0, 8.0);
     ctx.restore();
   }
 }

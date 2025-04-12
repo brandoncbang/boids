@@ -44,8 +44,9 @@ export class Entity {
 
   /**
    * @param {number} delta
+   * @param {World} world
    */
-  process(delta) {
+  process(delta, world) {
     // ...
   }
 
