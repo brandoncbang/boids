@@ -33,7 +33,10 @@ export class World {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     for (const entity of this.entities) {
+      ctx.save();
+      ctx.translate(entity.position.x, entity.position.y);
       entity.draw(ctx);
+      ctx.restore();
     }
   }
 }
@@ -41,6 +44,17 @@ export class World {
 export class Entity {
   /** @type {string} */
   id;
+
+  /** @type {Vector2} */
+  position;
+
+  /**
+   * @param params
+   * @param {Vector2} params.position
+   */
+  constructor(params) {
+    this.position = params.position;
+  }
 
   /**
    * @param {number} delta

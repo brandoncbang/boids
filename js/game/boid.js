@@ -11,7 +11,7 @@ export class Boid extends Entity {
    * @param {Vector2} [params.direction]
    */
   constructor(params) {
-    super();
+    super(params);
 
     this.position = params.position;
     this.direction = params.direction ?? Vector2.UP;
@@ -34,13 +34,9 @@ export class Boid extends Entity {
   }
 
   draw(ctx) {
-    // TODO: Maybe move wrapped save() and restore() methods before and after calling draw() for each boid.
-    ctx.save();
-    ctx.translate(this.position.x, this.position.y);
     ctx.rotate(this.direction.angle * Math.PI / 180.0 + 90);
     ctx.fillStyle = 'red';
     ctx.fillRect(-4.0, -8.0, 8.0, 8.0);
     ctx.fillRect(-8.0, 0.0, 16.0, 8.0);
-    ctx.restore();
   }
 }
