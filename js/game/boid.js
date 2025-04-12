@@ -17,15 +17,13 @@ export class Boid extends Entity {
   }
 
   process(delta, world) {
-    // const checkPosition = this.position.add(
-    //   this.direction.mult(100.0),
-    // );
+    const checkPosition = this.position.add(
+      this.direction.mult(100.0),
+    );
 
-    // if (!world.bounds.contains(checkPosition)) {
-    //   this.direction = this.direction.rotated(Boid.TURN_SPEED * delta);
-    // }
-
-    this.direction = this.direction.rotated(2.5 * delta);
+    if (!world.bounds.contains(checkPosition)) {
+      this.direction = this.direction.rotated(Boid.TURN_SPEED * delta);
+    }
 
     this.position = this.position.add(
       this.direction.mult(Boid.SPEED * delta),

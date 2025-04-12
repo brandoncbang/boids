@@ -22,7 +22,7 @@ export class World {
    */
   tick(delta) {
     for (const entity of this.entities) {
-      entity.process(delta);
+      entity.process(delta, this);
     }
   }
 
