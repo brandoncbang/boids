@@ -11,7 +11,7 @@ function setUpApp(canvasSelector) {
   const ctx = useCanvas('#canvas');
 
   const world = new World({
-    bounds: new Rect(0, 0, canvas.width, canvas.height),
+    bounds: new Rect(0, 0, ctx.canvas.width, ctx.canvas.height),
   });
 
   world.add(
