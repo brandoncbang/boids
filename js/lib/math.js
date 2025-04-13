@@ -5,6 +5,7 @@ export function randomInt(min, max) {
 }
 
 export class Vector2 {
+  static ZERO = new Vector2(0.0, 0.0);
   static UP = new Vector2(0.0, -1.0);
 
   /**
@@ -32,6 +33,17 @@ export class Vector2 {
   }
 
   /**
+   * @param {Vector2} value
+   * @return Vector2
+   */
+  sub(value) {
+    return new Vector2(
+      this.x - value.x,
+      this.y - value.y,
+    );
+  }
+
+  /**
    * @param {number} value
    * @return Vector2
    */
@@ -42,11 +54,29 @@ export class Vector2 {
     );
   }
 
+  /**
+   * @param {number} value
+   * @return Vector2
+   */
+  div(value) {
+    return new Vector2(
+      this.x / value,
+      this.y / value,
+    );
+  }
+
   rotated(degrees) {
     return new Vector2(
       this.x * Math.cos(degrees) - this.y * Math.sin(degrees),
       this.x * Math.sin(degrees) + this.y * Math.cos(degrees),
     );
+  }
+
+  /**
+   * @param {Vector2} v
+   */
+  distanceTo(v) {
+    return Math.sqrt((v.x - this.x) ** 2 + (v.y - this.y) ** 2);
   }
 }
 
